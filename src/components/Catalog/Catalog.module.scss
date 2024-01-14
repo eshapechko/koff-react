@@ -44,7 +44,8 @@
   border: 1px solid transparent;
   white-space: nowrap;
 
-  &:active {
+  &:active,
+  &_active {
     color: var(--light);
     background-color: var(--accent);
   }
@@ -53,5 +54,9 @@
   &:focus-visible {
     border-color: var(--accent);
     color: var(--accent);
+  }
+
+  &_active {
+    pointer-events: none;
   }
 }

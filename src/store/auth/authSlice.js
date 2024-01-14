@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ACCESS_KEY, API_URL } from '../../const';
 
 export const fetchAccessToken = createAsyncThunk(
   'auth/fetchAccessToken',
   async () => {
-    const response = await fetch(
-      'https://koff-api.vercel.app/api/users/accessKey',
-    );
+    const response = await fetch(`${API_URL}${ACCESS_KEY}`);
 
     if (!response.ok) {
       throw new Error('Не удалось получить токен доступа!');

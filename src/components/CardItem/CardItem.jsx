@@ -1,3 +1,4 @@
+import { API_URL } from '../../const';
 import s from './CardItem.module.scss';
 
 export const CardItem = (props) => {
@@ -6,7 +7,7 @@ export const CardItem = (props) => {
   return (
     <article className={s.card}>
       <a className={s.link} href='#'>
-        <img className={s.cardImg} src={images[0]} alt={name} />
+        <img className={s.cardImg} src={`${API_URL}${images[0]}`} alt={name} />
       </a>
       <div className={s.cardInfo}>
         <h3 className={s.cardTitle}>
