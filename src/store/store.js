@@ -9,5 +9,5 @@ export const store = configureStore({
     categories: categoriesReducer,
     products: productsReducer,
   },
-  // devTools: import.meta.env.DEV,
+  devTools: import.meta.env.DEV,
 });
