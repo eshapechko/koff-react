@@ -1,3 +1,15 @@
+:root {
+  /* Colors */
+  --secondary: #eeeff2;
+  --default: #1c1c1c;
+  --grayColor: #969eae;
+  --light: #fff;
+  --accent: #780096;
+  --secondAccent: #c0f;
+  --borderInputActive: #dfe3eb;
+  --btnHoverColor: #9200b7;
+}
+
 /* inter-regular - cyrillic_latin */
 @font-face {
   font-display: swap;
@@ -38,14 +50,23 @@ html {
 
 body {
   position: relative;
-  min-width: 320px;
-  min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
-  color: #1c1c1c;
+  color: var(--default);
   font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
-  background-color: #fff;
+  background-color: var(--light);
+}
+
+#root {
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
 }
 
 img,

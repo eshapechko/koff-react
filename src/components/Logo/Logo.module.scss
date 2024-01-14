@@ -1,0 +1,11 @@
+.img {
+  width: 100%;
+}
+
+.link {
+  border-radius: 4px;
+
+  &:focus-visible {
+    outline-color: var(--accent);
+  }
+}

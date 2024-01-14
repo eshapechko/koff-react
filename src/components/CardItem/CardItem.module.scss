@@ -1,0 +1,107 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.link {
+  display: block;
+  margin-bottom: 12px;
+
+  @media (min-width: 580px) {
+    margin-bottom: 16px;
+  }
+}
+
+.cardImg {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  aspect-ratio: 7/6;
+
+  @media (min-width: 580px) {
+    aspect-ratio: 23/20;
+  }
+
+  @media (min-width: 820px) {
+    aspect-ratio: 151/125;
+  }
+}
+
+.cardInfo {
+  flex-grow: 1;
+
+  @media (min-width: 580px) {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+}
+
+.cardTitle {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 4px;
+
+  @media (min-width: 580px) {
+    padding-top: 3px;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.price {
+  margin-bottom: 12px;
+  font-size: 16px;
+
+  @media (min-width: 580px) {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+}
+
+.cardBtn {
+  width: 100%;
+  padding: 12px 24px;
+  color: var(--accent);
+  border-radius: 32px;
+  border: 1px solid var(--accent);
+
+  &:hover {
+    color: var(--light);
+    border-color: var(--btnHoverColor);
+    background-color: var(--btnHoverColor);
+  }
+
+  &:active {
+    color: var(--secondAccent);
+    border-color: var(--secondAccent);
+    background-color: transparent;
+  }
+}
+
+.favorite {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  svg {
+    fill: var(--light);
+  }
+
+  &:hover,
+  &_active {
+    color: var(--accent);
+    svg {
+      fill: var(--accent);
+    }
+  }
+
+  &:active {
+    color: var(--secondAccent);
+    svg {
+      fill: var(--secondAccent);
+    }
+  }
+}

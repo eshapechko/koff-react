@@ -66,12 +66,6 @@ module.exports = {
     ],
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-spacing': ['error'],
-    'no-confusing-arrow': [
-      'error',
-      {
-        allowParens: true,
-      },
-    ],
     'no-useless-computed-key': ['error'],
     'no-useless-rename': ['error'],
     'object-shorthand': ['error', 'always'],
@@ -147,6 +141,7 @@ module.exports = {
         tabWidth: 2,
         ignoreUrls: true,
         ignorePattern: 'goog.(module|require)',
+        ignoreStrings: true, // не проверять строки
       },
     ],
     'new-cap': 'error',
