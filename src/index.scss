@@ -10,7 +10,6 @@
   --btnHoverColor: #9200b7;
 }
 
-/* inter-regular - cyrillic_latin */
 @font-face {
   font-display: swap;
   font-family: 'Inter';
@@ -19,7 +18,6 @@
   src: url('/fonts/inter-v13-cyrillic_latin-regular.woff2') format('woff2');
 }
 
-/* open-sans-regular - cyrillic_latin */
 @font-face {
   font-display: swap;
   font-family: 'Open Sans';
@@ -28,7 +26,6 @@
   src: url('/fonts/open-sans-v40-cyrillic_latin-regular.woff2') format('woff2');
 }
 
-/* open-sans-700 - cyrillic_latin */
 @font-face {
   font-display: swap;
   font-family: 'Open Sans';
@@ -107,4 +104,8 @@ fieldset {
 .visually-hidden {
   position: fixed;
   transform: scale(0);
+}
+
+main {
+  margin-bottom: 100px;
 }

@@ -1,19 +1,27 @@
+import { Link } from 'react-router-dom';
 import { API_URL } from '../../const';
 import s from './CardItem.module.scss';
 
 export const CardItem = (props) => {
-  const { name, price, images } = props;
+  const {
+    id,
+    name,
+    price,
+    images: [image],
+  } = props;
 
   return (
     <article className={s.card}>
-      <a className={s.link} href='#'>
-        <img className={s.cardImg} src={`${API_URL}${images[0]}`} alt={name} />
-      </a>
+      <Link className={s.link} to={`/product/${id}`}>
+        <img className={s.cardImg} src={`${API_URL}${image}`} alt={name} />
+      </Link>
       <div className={s.cardInfo}>
         <h3 className={s.cardTitle}>
-          <a href='#'>{name}</a>
+          <Link className={s.link} to={`/product/${id}`}>
+            {name}
+          </Link>
         </h3>
-        <p className={s.price}>{price}&nbsp;₽</p>
+        <p className={s.price}>{price.toLocaleString()}&nbsp;₽</p>
       </div>
       <button className={s.cardBtn}>В корзину</button>
       <button className={s.favorite}>
