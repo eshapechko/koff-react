@@ -3,7 +3,7 @@ import { API_URL } from '../../const';
 
 export const fetchProduct = createAsyncThunk(
   'product/fetchProduct',
-  async (id, { getState }) => {
+  async (id, { getState, rejectWithValue }) => {
     const token = getState().auth.accessToken;
 
     const response = await fetch(`${API_URL}api/products/${id}`, {
@@ -13,6 +13,13 @@ export const fetchProduct = createAsyncThunk(
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        return rejectWithValue({
+          status: response.status,
+          error: 'Не удалось получить товар!',
+        });
+      }
+
       throw new Error('Не удалось получить товар!');
     }
 

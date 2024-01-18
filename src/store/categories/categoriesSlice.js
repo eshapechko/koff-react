@@ -3,9 +3,8 @@ import { API_URL, PRODUCT_CATEGORIES } from '../../const';
 
 export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const token = state.auth.accessToken;
+  async (_, { getState, rejectWithValue }) => {
+    const token = getState().auth.accessToken;
 
     const response = await fetch(`${API_URL}${PRODUCT_CATEGORIES}`, {
       headers: {
@@ -14,6 +13,13 @@ export const fetchCategories = createAsyncThunk(
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        return rejectWithValue({
+          status: response.status,
+          error: 'Не удалось получить каталог!',
+        });
+      }
+
       throw new Error('Не удалось получить каталог!');
     }
 
