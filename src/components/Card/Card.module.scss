@@ -18,64 +18,6 @@
   }
 }
 
-.sliderMain {
-  position: relative;
-  width: 100%;
-  height: 74vw;
-  max-height: 688px;
-
-  @media (min-width: 580px) {
-    margin-bottom: 14px;
-    height: 92vw;
-  }
-
-  @media (min-width: 820px) {
-    height: 60vw;
-  }
-
-  @media (min-width: 1120px) {
-    height: 48vw;
-  }
-}
-
-.mainSlide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.thumbnailSlide {
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.sliderThumbnails {
-  display: none !important;
-
-  @media (min-width: 580px) {
-    display: block !important;
-    height: 22vw;
-    max-height: 138px;
-  }
-
-  @media (min-width: 820px) {
-    height: 12vw;
-    max-height: 120px;
-  }
-
-  @media (min-width: 1120px) {
-    max-height: 162px;
-  }
-}
-
 .title {
   font-size: 24px;
   font-weight: 700;
@@ -87,19 +29,6 @@
 
   @media (min-width: 820px) {
     grid-column: 1/-1;
-    margin-bottom: 0;
-  }
-}
-
-.picture {
-  margin-bottom: 32px;
-
-  @media (min-width: 580px) {
-    margin-bottom: 40px;
-  }
-
-  @media (min-width: 820px) {
-    grid-column: 1/2;
     margin-bottom: 0;
   }
 }
@@ -123,7 +52,7 @@
   margin-bottom: 24px;
 }
 
-.characteristic_title {
+.characteristicTitle {
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 4px;
@@ -163,6 +92,14 @@
   border: 1px solid transparent;
   background-color: #780096;
   border-radius: 32px;
+
+  &:hover {
+    background-color: var(--btnHoverColor);
+  }
+
+  &:focus-visible {
+    border-color: var(--secondAccent);
+  }
 }
 
 .like {
@@ -173,8 +110,10 @@
     fill: var(--light);
   }
 
-  &:hover {
+  &:hover,
+  &_active {
     color: var(--accent);
+
     svg {
       fill: var(--accent);
     }
@@ -182,40 +121,9 @@
 
   &:active {
     color: var(--secondAccent);
+
     svg {
       fill: var(--secondAccent);
     }
-  }
-}
-
-.prev,
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  z-index: 999;
-  color: var(--light);
-  opacity: 0.4;
-  transition: opacity 0.3s ease-in-out;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.next {
-  right: 16px;
-
-  @media (min-width: 580px) {
-    right: 24px;
-  }
-}
-
-.prev {
-  left: 16px;
-
-  @media (min-width: 580px) {
-    left: 24px;
   }
 }
