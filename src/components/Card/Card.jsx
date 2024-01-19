@@ -46,7 +46,7 @@ export const Card = () => {
 
           <div className={s.buttons}>
             <button className={s.btn}>В корзину</button>
-            <button className={s.like}>
+            <button className={s.like} aria-label='добавить в избранное'>
               <svg
                 width='16'
                 height='14'
