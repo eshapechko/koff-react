@@ -5,6 +5,7 @@ import s from './Goods.module.scss';
 import { fetchProducts } from '../../store/products/productsSlice';
 import { useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { Loader } from '../../components/Loader/Loader';
 
 export const Goods = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const Goods = () => {
     }
   }, [dispatch, category, q, location.pathname]);
 
-  if (loading) return <h2>Loading...</h2>;
+  if (loading) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
 
   return (
