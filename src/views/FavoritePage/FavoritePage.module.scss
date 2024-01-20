@@ -1,0 +1,15 @@
+.emptyFavorite {
+  padding: 40px 0;
+  font-size: 22px;
+  text-align: center;
+
+  @media (min-width: 540px) {
+    padding: 60px 0;
+    font-size: 26px;
+  }
+
+  @media (min-width: 768px) {
+    padding: 100px 0;
+    font-size: 32px;
+  }
+}
