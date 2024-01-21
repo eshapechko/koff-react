@@ -86,18 +86,6 @@
   top: 12px;
   right: 12px;
 
-  svg {
-    fill: var(--light);
-  }
-
-  &:hover,
-  &_active {
-    color: var(--accent);
-    svg {
-      fill: var(--accent);
-    }
-  }
-
   &:active {
     color: var(--secondAccent);
     svg {

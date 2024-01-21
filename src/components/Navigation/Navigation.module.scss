@@ -11,9 +11,26 @@
   outline-offset: 4px;
   padding-top: 2px;
   border-radius: 4px;
+  position: relative;
 
   @media (min-width: 580px) {
     flex-direction: row;
+  }
+
+  &::before {
+    content: '';
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+    margin-bottom: -2px;
+  }
+
+  &:hover::before {
+    width: 100%;
   }
 
   &:hover,

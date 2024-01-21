@@ -16,7 +16,7 @@ export const FavoritePage = () => {
   }, [dispatch, favoriteList]);
 
   return favoriteList.length ? (
-    <Goods />
+    <Goods title='Избранное' />
   ) : (
     <h3 className={s.emptyFavorite}>Вы ничего не добавили в избранное</h3>
   );

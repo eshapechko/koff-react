@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          <Goods />
+          <Goods title='Список товаров' />
         </main>
         <Footer />
       </>
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          <Goods />
+          <Goods title='Список товаров' />
         </main>
         <Footer />
       </>
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          <Goods />
+          <Goods title='Список товаров' />
         </main>
         <Footer />
       </>

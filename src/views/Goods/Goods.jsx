@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
 
-export const Goods = () => {
+export const Goods = ({ title }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -28,7 +28,7 @@ export const Goods = () => {
   return (
     <section className={s.goods}>
       <Container>
-        <h2 className={`${s.title} visually-hidden`}>Список товаров</h2>
+        <h2 className='visually-hidden'>{title}</h2>
         {data.length ? (
           <ul className={s.list}>
             {data?.map((item) => (
