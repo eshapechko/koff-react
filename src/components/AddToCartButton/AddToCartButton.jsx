@@ -4,7 +4,6 @@ import { addProductToCart } from '../../store/cart/cartSlice';
 export const AddToCartButton = ({ className, id }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    console.log(`ADD CART ${id}`);
     dispatch(addProductToCart({ productId: id, quantity: 1 }));
   };
 
