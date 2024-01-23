@@ -2,13 +2,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../Container/Container';
 import s from './Catalog.module.scss';
 import { useEffect } from 'react';
-import { fetchCategories } from '../../store/categories/categoriesSlice';
+import {
+  changeCategory,
+  fetchCategories,
+} from '../../store/categories/categoriesSlice';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 
 export const Catalog = () => {
   const dispatch = useDispatch();
 
-  const { data, loading, error } = useSelector((state) => state.categories);
+  const { data, loading, error, activeCategory } = useSelector(
+    (state) => state.categories,
+  );
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -23,7 +29,13 @@ export const Catalog = () => {
         <ul className={s.list}>
           {data.map((item, i) => (
             <li key={i}>
-              <Link className={s.link} to={`/category?category=${item}`}>
+              <Link
+                className={cn(
+                  s.link,
+                  activeCategory === i ? s.link_active : '',
+                )}
+                to={`/category?category=${item}`}
+                onClick={() => dispatch(changeCategory(i))}>
                 {item}
               </Link>
             </li>

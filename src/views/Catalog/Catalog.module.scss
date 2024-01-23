@@ -44,16 +44,16 @@
   border: 1px solid transparent;
   white-space: nowrap;
 
-  &:active,
-  &_active {
-    color: var(--light);
-    background-color: var(--accent);
-  }
-
   &:hover,
   &:focus-visible {
     border-color: var(--accent);
     color: var(--accent);
+  }
+
+  &:active,
+  &_active {
+    color: var(--light);
+    background-color: var(--accent);
   }
 
   &_active {

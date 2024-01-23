@@ -165,7 +165,13 @@ module.exports = {
         const: 'never',
       },
     ],
-    'operator-linebreak': ['error', 'after'],
+    'operator-linebreak': [
+      'error',
+      'before',
+      {
+        overrides: { '=': 'after' },
+      },
+    ],
     'padded-blocks': ['error', 'never'],
     'quote-props': ['error', 'consistent'],
     quotes: [

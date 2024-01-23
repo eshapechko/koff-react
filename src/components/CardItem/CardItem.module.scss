@@ -7,7 +7,9 @@
 
 .link {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
+  padding-top: 2px;
+  padding-bottom: 1px;
 
   @media (min-width: 580px) {
     margin-bottom: 16px;

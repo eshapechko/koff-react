@@ -10,7 +10,7 @@ export const FavoritePage = () => {
 
   useEffect(() => {
     if (favoriteList) {
-      const param = { list: favoriteList };
+      const param = { list: favoriteList.join(',') };
       dispatch(fetchProducts(param));
     }
   }, [dispatch, favoriteList]);

@@ -6,21 +6,33 @@ import { fetchProducts } from '../../store/products/productsSlice';
 import { useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 export const Goods = ({ title }) => {
   const dispatch = useDispatch();
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const { data, loading, error, pagination } = useSelector(
+    (state) => state.products,
+  );
+  const favoriteList = useSelector((state) => state.favorite.favoriteList);
 
   const [searchParam] = useSearchParams();
   const category = searchParam.get('category');
   const q = searchParam.get('q');
-  const { data, loading, error } = useSelector((state) => state.products);
+  const page = searchParam.get('page');
 
   useEffect(() => {
-    if (location.pathname !== '/favorite') {
-      dispatch(fetchProducts({ category, q }));
+    if (pathname !== '/favorite') {
+      dispatch(fetchProducts({ category, q, page }));
     }
-  }, [dispatch, category, q, location.pathname]);
+  }, [dispatch, category, q, pathname, page]);
+
+  useEffect(() => {
+    if (pathname === '/favorite') {
+      const param = { list: favoriteList.join(','), page };
+      dispatch(fetchProducts(param));
+    }
+  }, [dispatch, favoriteList, pathname, page]);
 
   if (loading) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
@@ -30,13 +42,16 @@ export const Goods = ({ title }) => {
       <Container>
         <h2 className='visually-hidden'>{title}</h2>
         {data.length ? (
-          <ul className={s.list}>
-            {data?.map((item) => (
-              <li key={item.id}>
-                <CardItem {...item} />
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul className={s.list}>
+              {data?.map((item) => (
+                <li key={item.id}>
+                  <CardItem {...item} />
+                </li>
+              ))}
+            </ul>
+            {pagination ? <Pagination pagination={pagination} /> : ''}
+          </>
         ) : (
           <p>По вашему запросу товаров не найдено</p>
         )}
