@@ -6,7 +6,7 @@ import { fetchAccessToken } from './store/auth/authSlice';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Catalog } from './views/Catalog/Catalog';
 import { Goods } from './views/Goods/Goods';
-import { Cart } from './components/Cart/Cart';
+import { Cart } from './views/Cart/Cart';
 import { Card } from './components/Card/Card';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 
