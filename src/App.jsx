@@ -9,6 +9,7 @@ import { Goods } from './views/Goods/Goods';
 import { Cart } from './views/Cart/Cart';
 import { Card } from './components/Card/Card';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
+import { fetchCart } from './store/cart/cartSlice';
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ export const App = () => {
       dispatch(fetchAccessToken());
     }
   }, [dispatch, accessToken]);
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   if (loading) return <div>Loading...</div>;
 

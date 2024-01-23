@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import s from './Navigation.module.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeCategory } from '../../store/categories/categoriesSlice';
 
 export const Navigation = () => {
   const dispatch = useDispatch();
+  const totalCount = useSelector((state) => state.cart.totalCount);
 
   return (
     <nav className={s.navigation}>
@@ -35,7 +36,7 @@ export const Navigation = () => {
       </Link>
       <Link className={s.link} to='/cart'>
         <span className={s.text}>Корзина</span>
-        <span>(5)</span>
+        <span>({totalCount})</span>
         <svg
           width='16'
           height='16'

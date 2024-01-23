@@ -169,11 +169,11 @@ module.exports = {
       'error',
       'before',
       {
-        overrides: { '=': 'after' },
+        overrides: { '=': 'after', '+': 'ignore' },
       },
     ],
     'padded-blocks': ['error', 'never'],
-    'quote-props': ['error', 'consistent'],
+    'quote-props': ['error', 'as-needed'],
     quotes: [
       'error',
       'single',
