@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from '../../store/product/productSlice';
 import { Slider } from '../Slider/Slider';
 import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
-import { AddToCartButton } from '/src/components/AddToCartButton/AddToCartButton';
+import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 
 export const Card = () => {
   const dispatch = useDispatch();

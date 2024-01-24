@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { API_URL } from '../../const';
 import s from './CardItem.module.scss';
 import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
-import { AddToCartButton } from '../addToCartButton/addToCartButton';
+import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 
 export const CardItem = (props) => {
   const {
