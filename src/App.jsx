@@ -114,8 +114,10 @@ export const App = () => {
   }, [dispatch, accessToken]);
 
   useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+    if (accessToken) {
+      dispatch(fetchCart());
+    }
+  }, [dispatch, accessToken]);
 
   if (loading) return <div>Loading...</div>;
 

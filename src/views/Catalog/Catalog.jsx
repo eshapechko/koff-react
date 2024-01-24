@@ -8,6 +8,7 @@ import {
 } from '../../store/categories/categoriesSlice';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { BarLoader } from 'react-spinners';
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -20,14 +21,19 @@ export const Catalog = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (loading) return <h2>Loading...</h2>;
+  if (loading) {
+    return (
+      <BarLoader color='#780096' cssOverride={{ margin: '40px auto 0px' }} />
+    );
+  }
   if (error) return <div>Ошибка: {error}</div>;
+  if (!data) return <div>Данные не получены, попробуйте затйти позже...</div>;
 
   return (
     <nav className={s.catalog}>
       <Container className={s.container}>
         <ul className={s.list}>
-          {data.map((item, i) => (
+          {data?.map((item, i) => (
             <li key={i}>
               <Link
                 className={cn(

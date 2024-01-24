@@ -5,6 +5,7 @@ export const fetchCategories = createAsyncThunk(
   'categories/fetchCategories',
   async (_, { getState, rejectWithValue }) => {
     const token = getState().auth.accessToken;
+    if (!token) return;
 
     const response = await fetch(`${API_URL}${PRODUCT_CATEGORIES}`, {
       headers: {

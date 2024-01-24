@@ -29,10 +29,22 @@ export const Goods = ({ title }) => {
 
   useEffect(() => {
     if (pathname === '/favorite') {
-      const param = { list: favoriteList.join(','), page };
-      dispatch(fetchProducts(param));
+      if (favoriteList) {
+        const param = { list: favoriteList.join(','), page };
+        dispatch(fetchProducts(param));
+      }
     }
   }, [dispatch, favoriteList, pathname, page]);
+
+  // const emptyPage = () => {
+  //   if (pathname === '/favorite') {
+  //     return (
+  //       <h3 className={s.emptyFavorite}>Вы ничего не добавили в избранное</h3>
+  //     );
+  //   } else {
+  //     return <p>По вашему запросу товаров не найдено</p>;
+  //   }
+  // };
 
   if (loading) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
@@ -41,7 +53,7 @@ export const Goods = ({ title }) => {
     <section className={s.goods}>
       <Container>
         <h2 className='visually-hidden'>{title}</h2>
-        {data.length ? (
+        {data?.length ? (
           <>
             <ul className={s.list}>
               {data?.map((item) => (

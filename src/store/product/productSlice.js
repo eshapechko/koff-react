@@ -5,6 +5,7 @@ export const fetchProduct = createAsyncThunk(
   'product/fetchProduct',
   async (id, { getState, rejectWithValue }) => {
     const token = getState().auth.accessToken;
+    if (!token) return;
 
     const response = await fetch(`${API_URL}api/products/${id}`, {
       headers: {

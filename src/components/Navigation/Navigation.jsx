@@ -1,16 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import s from './Navigation.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCategory } from '../../store/categories/categoriesSlice';
+import cn from 'classnames';
 
 export const Navigation = () => {
   const dispatch = useDispatch();
   const totalCount = useSelector((state) => state.cart.totalCount);
+  const { pathname } = useLocation();
 
   return (
     <nav className={s.navigation}>
       <Link
-        className={s.link}
+        className={cn(s.link, pathname === '/favorite' ? s.link_active : '')}
         to='/favorite'
         onClick={() => dispatch(changeCategory(null))}>
         <span className={s.text}>Избранное</span>
@@ -34,7 +36,9 @@ export const Navigation = () => {
           />
         </svg>
       </Link>
-      <Link className={s.link} to='/cart'>
+      <Link
+        className={cn(s.link, pathname === '/cart' ? s.link_active : '')}
+        to='/cart'>
         <span className={s.text}>Корзина</span>
         <span>({totalCount})</span>
         <svg

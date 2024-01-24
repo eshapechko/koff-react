@@ -5,6 +5,7 @@ export const fetchCart = createAsyncThunk(
   'cart/fetchCart',
   async (_, { getState, rejectWithValue }) => {
     const token = getState().auth.accessToken;
+    if (!token) return;
 
     try {
       const response = await fetch(`${API_URL}${CART}`, {
@@ -123,9 +124,9 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
-        state.products = action.payload.products;
-        state.totalCount = action.payload.totalCount;
-        state.totalPrice = action.payload.totalPrice;
+        state.products = action.payload?.products;
+        state.totalCount = action.payload?.totalCount;
+        state.totalPrice = action.payload?.totalPrice;
         state.loadingFetch = false;
         state.error = null;
       })
@@ -139,9 +140,9 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(addProductToCart.fulfilled, (state, action) => {
-        state.products = [...state.products, action.payload.product];
-        state.totalCount = action.payload.totalCount;
-        state.totalPrice = action.payload.totalPrice;
+        state.products = [...state.products, action.payload?.product];
+        state.totalCount = action.payload?.totalCount;
+        state.totalPrice = action.payload?.totalPrice;
         state.loadingAdd = false;
         state.error = null;
       })
@@ -155,11 +156,11 @@ const cartSlice = createSlice({
         state.error = null;
       })
       .addCase(removeProductFromCart.fulfilled, (state, action) => {
-        const removeProduct = state.products.filter(
+        const removeProduct = state.products?.filter(
           (item) => item.id === action.payload.id,
         );
 
-        state.products = state.products.filter(
+        state.products = state.products?.filter(
           (item) => item.id !== action.payload.id,
         );
         state.totalCount = action.payload.totalCount;

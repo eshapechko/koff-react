@@ -17,7 +17,8 @@
     flex-direction: row;
   }
 
-  &::before {
+  &::before,
+  &_active::before {
     content: '';
     width: 0;
     height: 1px;
@@ -29,12 +30,14 @@
     margin-bottom: -2px;
   }
 
-  &:hover::before {
+  &:hover::before,
+  &_active::before {
     width: 100%;
   }
 
   &:hover,
-  &:active {
+  &:active,
+  &_active {
     color: var(--accent);
   }
 

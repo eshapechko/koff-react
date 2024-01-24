@@ -5,6 +5,7 @@ export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (param, { getState, rejectWithValue }) => {
     const token = getState().auth.accessToken;
+    if (!token) return;
 
     const queryParams = new URLSearchParams();
 
@@ -59,8 +60,8 @@ const productsSlice = createSlice({
           state.data = action.payload;
           state.pagination = null;
         } else {
-          state.data = action.payload.data;
-          state.pagination = action.payload.pagination;
+          state.data = action.payload?.data;
+          state.pagination = action.payload?.pagination;
         }
 
         state.loading = false;
