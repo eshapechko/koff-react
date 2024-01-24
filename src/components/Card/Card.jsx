@@ -22,7 +22,7 @@ export const Card = () => {
 
   if (loading) return <h2>Loading...</h2>;
   if (error) return <div>Ошибка: {error}</div>;
-  if (!data) return <div>Продукт не найденб попробуйте позже</div>;
+  if (!data) return <div>Продукт не найден, попробуйте позже</div>;
 
   return (
     <section className={s.card}>
@@ -48,8 +48,8 @@ export const Card = () => {
           </div>
 
           <div className={s.buttons}>
-            <AddToCartButton className={s.btn} id={data.id} />
-            <FavoriteButton className={s.like} id={data.id} />
+            <AddToCartButton className={s.btn} id={data?.id} />
+            <FavoriteButton className={s.like} id={data?.id} />
           </div>
         </div>
       </Container>
