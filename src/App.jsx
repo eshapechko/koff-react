@@ -10,6 +10,7 @@ import { Cart } from './views/Cart/Cart';
 import { Card } from './components/Card/Card';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { fetchCart } from './store/cart/cartSlice';
+import { FavoritePage } from './views/FavoritePage/FavoritePage';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          <Goods title='Избранное' />
+          {/* <Goods title='Избранное' /> */}
+          <FavoritePage />
         </main>
         <Footer />
       </>

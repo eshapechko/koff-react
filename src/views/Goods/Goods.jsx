@@ -14,7 +14,7 @@ export const Goods = ({ title }) => {
   const { data, loading, error, pagination } = useSelector(
     (state) => state.products,
   );
-  const favoriteList = useSelector((state) => state.favorite.favoriteList);
+  // const favoriteList = useSelector((state) => state.favorite.favoriteList);
 
   const [searchParam] = useSearchParams();
   const category = searchParam.get('category');
@@ -27,24 +27,14 @@ export const Goods = ({ title }) => {
     }
   }, [dispatch, category, q, pathname, page]);
 
-  useEffect(() => {
-    if (pathname === '/favorite') {
-      if (favoriteList) {
-        const param = { list: favoriteList.join(','), page };
-        dispatch(fetchProducts(param));
-      }
-    }
-  }, [dispatch, favoriteList, pathname, page]);
-
-  // const emptyPage = () => {
+  // useEffect(() => {
   //   if (pathname === '/favorite') {
-  //     return (
-  //       <h3 className={s.emptyFavorite}>Вы ничего не добавили в избранное</h3>
-  //     );
-  //   } else {
-  //     return <p>По вашему запросу товаров не найдено</p>;
+  //     if (favoriteList) {
+  //       const param = { list: favoriteList.join(','), page };
+  //       dispatch(fetchProducts(param));
+  //     }
   //   }
-  // };
+  // }, [dispatch, favoriteList, pathname, page]);
 
   if (loading) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
