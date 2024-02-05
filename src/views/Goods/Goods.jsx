@@ -14,7 +14,6 @@ export const Goods = ({ title }) => {
   const { data, loading, error, pagination } = useSelector(
     (state) => state.products,
   );
-  // const favoriteList = useSelector((state) => state.favorite.favoriteList);
 
   const [searchParam] = useSearchParams();
   const category = searchParam.get('category');
@@ -26,15 +25,6 @@ export const Goods = ({ title }) => {
       dispatch(fetchProducts({ category, q, page }));
     }
   }, [dispatch, category, q, pathname, page]);
-
-  // useEffect(() => {
-  //   if (pathname === '/favorite') {
-  //     if (favoriteList) {
-  //       const param = { list: favoriteList.join(','), page };
-  //       dispatch(fetchProducts(param));
-  //     }
-  //   }
-  // }, [dispatch, favoriteList, pathname, page]);
 
   if (loading) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;

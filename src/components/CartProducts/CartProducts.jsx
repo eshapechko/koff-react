@@ -1,14 +1,35 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import s from './CartProducts.module.scss';
 import { API_URL } from '../../const';
-import { removeProductFromCart } from '../../store/cart/cartSlice';
+import {
+  removeProductFromCart,
+  updateProductToCart,
+} from '../../store/cart/cartSlice';
 
-export const CartProducts = () => {
+export const CartProducts = ({ products }) => {
   const dispatch = useDispatch();
-  const { products, loadingFetch, error } = useSelector((state) => state.cart);
 
-  if (loadingFetch) return <div>Loading...</div>;
-  if (error) return <div>Ошибка: {error}</div>;
+  const handleMinus = (id, quantity) => {
+    if (quantity > 1) {
+      dispatch(
+        updateProductToCart({
+          productId: id,
+          quantity: quantity - 1,
+        }),
+      );
+    } else {
+      dispatch(removeProductFromCart(id));
+    }
+  };
+
+  const handlePlus = (id, quantity) => {
+    dispatch(
+      updateProductToCart({
+        productId: id,
+        quantity: quantity + 1,
+      }),
+    );
+  };
 
   return (
     <ul className={s.products}>
@@ -26,11 +47,13 @@ export const CartProducts = () => {
           <div className={s.productControl}>
             <button
               className={s.productBtn}
-              onClick={() => dispatch(removeProductFromCart(item.id))}>
+              onClick={() => handleMinus(item.id, item.quantity)}>
               -
             </button>
             <p className={s.productCount}>{item.quantity}</p>
-            <button className={s.productBtn} onClick={() => {}}>
+            <button
+              className={s.productBtn}
+              onClick={() => handlePlus(item.id, item.quantity)}>
               +
             </button>
           </div>

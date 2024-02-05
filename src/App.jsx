@@ -9,8 +9,9 @@ import { Goods } from './views/Goods/Goods';
 import { Cart } from './views/Cart/Cart';
 import { Card } from './components/Card/Card';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
-import { fetchCart } from './store/cart/cartSlice';
 import { FavoritePage } from './views/FavoritePage/FavoritePage';
+import { Order } from './views/Order/Order';
+import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
+          <Breadcrumbs />
           <Goods title='Список товаров' />
         </main>
         <Footer />
@@ -85,7 +87,20 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
+          <Breadcrumbs />
           <Card />
+        </main>
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/order/:orderId',
+    element: (
+      <>
+        <Header />
+        <main>
+          <Order />
         </main>
         <Footer />
       </>
@@ -112,12 +127,6 @@ export const App = () => {
   useEffect(() => {
     if (!accessToken) {
       dispatch(fetchAccessToken());
-    }
-  }, [dispatch, accessToken]);
-
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(fetchCart());
     }
   }, [dispatch, accessToken]);
 

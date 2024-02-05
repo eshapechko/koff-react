@@ -8,9 +8,7 @@ export const NotFoundPage = () => (
       <br />
       Ничего не найдено
     </h1>
-    <p className={s.description}>
-      К сожалению данная страница отсутствует в нашем интернет-магазине
-    </p>
+    <p className={s.description}>Произошла ошибка, попробуйте зайти позже</p>
     <Link to='/' className={s.btn}>
       На главную
     </Link>

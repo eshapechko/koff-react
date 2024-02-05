@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { Container } from '../../views/Container/Container';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct } from '../../store/product/productSlice';
+import { clearProduct, fetchProduct } from '../../store/product/productSlice';
 import { Slider } from '../Slider/Slider';
 import { FavoriteButton } from '../FavoriteButton/FavoriteButton';
 import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
+import { Loader } from '../Loader/Loader';
 
 export const Card = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,13 @@ export const Card = () => {
     if (productId) {
       dispatch(fetchProduct(productId));
     }
+
+    return () => {
+      dispatch(clearProduct());
+    };
   }, [dispatch, productId]);
 
-  if (loading) return <h2>Loading...</h2>;
+  if (loading) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
   if (!data) return <div>Продукт не найден, попробуйте позже</div>;
 

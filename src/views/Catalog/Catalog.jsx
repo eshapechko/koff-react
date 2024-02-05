@@ -2,10 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../Container/Container';
 import s from './Catalog.module.scss';
 import { useEffect } from 'react';
-import {
-  changeCategory,
-  fetchCategories,
-} from '../../store/categories/categoriesSlice';
+import { fetchCategories } from '../../store/categories/categoriesSlice';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { BarLoader } from 'react-spinners';
@@ -40,8 +37,7 @@ export const Catalog = () => {
                   s.link,
                   activeCategory === i ? s.link_active : '',
                 )}
-                to={`/category?category=${item}`}
-                onClick={() => dispatch(changeCategory(i))}>
+                to={`/category?category=${item}`}>
                 {item}
               </Link>
             </li>
