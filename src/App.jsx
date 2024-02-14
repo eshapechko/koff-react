@@ -34,7 +34,6 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          {/* <Goods title='Избранное' /> */}
           <FavoritePage />
         </main>
         <Footer />
